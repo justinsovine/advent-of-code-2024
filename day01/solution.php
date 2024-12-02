@@ -9,28 +9,29 @@
  * What is the total distance between lists?
  */
 
+const INPUT_FILE = 'input.txt';
 $list_1 = [];
 $list_2 = [];
 $distance_between = [];
 $total_distance = 0;
 
-// Open file, split lines, and assign to respective lists
-$fp = @fopen("input.txt", "r");
-if ($fp) {
-    while (($buffer = fgets($fp)) !== false) {
-        $line = explode("   ", $buffer);
-        $list_1[] = trim($line[0]);
-        $list_2[] = trim($line[1]);
-    }
-
-    if (!feof($fp)) {
-        echo "Error: unexpected fgets() fail\n";
-    }
-
-    fclose($fp);
-} else {
-    echo "Error: unexpected fopen() fail\n";
+// Open file
+$fp = @fopen(INPUT_FILE, "r");
+if (!$fp) {
+    die("Error: Unable to open file " . INPUT_FILE. "\n");
 }
+// Split lines and assign to respective lists
+while (($buffer = fgets($fp)) !== false) {
+    $line = explode("   ", $buffer);
+    $list_1[] = trim($line[0]);
+    $list_2[] = trim($line[1]);
+}
+
+// Check if EOF and close file
+if (!feof($fp)) {
+    die("Error: unexpected fgets() fail\n");
+}
+fclose($fp);
 
 // Sort lists ascending
 sort($list_1, SORT_NUMERIC);
