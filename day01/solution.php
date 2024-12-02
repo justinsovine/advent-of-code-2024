@@ -56,7 +56,7 @@ $similarity_score = 0;
 // Calculate individual similarity scores against list_2
 for ($i = 0; $i < count($list_1); $i++) {
     // Take $i of list_1 and iterate over each value in list_2, passing them to the callback function
-    // Count number of matches
+    // Then count number of matches
     $l1_value = $list_1[$i];
     $l2_matches = count(array_filter($list_2, function($x) use ($l1_value) {
         return $x == $l1_value;
