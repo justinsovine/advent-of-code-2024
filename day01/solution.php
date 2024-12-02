@@ -41,9 +41,6 @@ for ($i = 0; $i < count($list_1); $i++) {
     $total_distance += abs($list_1[$i] - $list_2[$i]);
 }
 
-// Display results
-echo "Total distance: $total_distance\n";
-
 /**
  * Day 1 Part 2
  *
@@ -74,4 +71,5 @@ foreach ($similarity_scores as $score) {
 }
 
 // Display results
+echo "Total distance: $total_distance\n";
 echo "Similarity score: $similarity_score\n";
