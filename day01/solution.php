@@ -54,12 +54,14 @@ $similarity_scores = [];
 $similarity_score = 0;
 
 // Calculate individual similarity scores against list_2
+// Note: Sorting is 0(n log n), and counting matches with array_filter is 0(n^2) in the worst case.
+// To-do: Optimize match counting using hash maps
 for ($i = 0; $i < count($list_1); $i++) {
-    // Take $i of list_1 and iterate over each value in list_2, passing them to the callback function
-    // Then count number of matches
+    // Take $i of list_1 and iterate over each value in list_2, passing them to
+    // the callback function, then count number of matches.
     $l1_value = $list_1[$i];
     $l2_matches = count(array_filter($list_2, function($x) use ($l1_value) {
-        return $x == $l1_value;
+        return $x === $l1_value;
     }));
 
     // Calculate individual similarity score
