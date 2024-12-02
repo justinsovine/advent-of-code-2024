@@ -12,7 +12,6 @@
 const INPUT_FILE = 'input.txt';
 $list_1 = [];
 $list_2 = [];
-$distance_between = [];
 $total_distance = 0;
 
 // Open file
@@ -37,16 +36,9 @@ fclose($fp);
 sort($list_1, SORT_NUMERIC);
 sort($list_2, SORT_NUMERIC);
 
-// Calculate absolute distance between each line and store in distance between list
+// Calculate absolute distance between each line and add to total distance
 for ($i = 0; $i < count($list_1); $i++) {
-    $distance_between[] = abs($list_1[$i] - $list_2[$i]);
-    $last_element = end($distance_between);
-    //echo $list_1[$i] . " - " . $list_2[$i] . " = " . $last_element . "\n";
-}
-
-// Calculate total distance between the left list and the right list
-foreach ($distance_between as $distance) {
-    $total_distance += $distance;
+    $total_distance += abs($list_1[$i] - $list_2[$i]);
 }
 
 // Display results
