@@ -9,7 +9,7 @@
  * What is the total distance between lists?
  */
 
-const INPUT_FILE = 'input.txt';
+const INPUT_FILE = 'test_input.txt';
 $list_1 = [];
 $list_2 = [];
 $total_distance = 0;
@@ -19,6 +19,7 @@ $fp = @fopen(INPUT_FILE, "r");
 if (!$fp) {
     die("Error: Unable to open file " . INPUT_FILE. "\n");
 }
+
 // Split lines and assign to respective lists
 while (($buffer = fgets($fp)) !== false) {
     $line = explode("   ", $buffer);
@@ -47,7 +48,6 @@ for ($i = 0; $i < count($list_1); $i++) {
  * Calculate similarity score
  */
 
-$similarity_scores = [];
 $similarity_score = 0;
 
 // Calculate individual similarity scores against list_2
@@ -61,13 +61,8 @@ for ($i = 0; $i < count($list_1); $i++) {
         return $x === $l1_value;
     }));
 
-    // Calculate individual similarity score
-    $similarity_scores[$i] = $l1_value * $l2_matches;
-}
-
-// Total similarity scores
-foreach ($similarity_scores as $score) {
-    $similarity_score += $score;
+    // Total the individual similarity score
+    $similarity_score += $l1_value * $l2_matches;
 }
 
 // Display results
