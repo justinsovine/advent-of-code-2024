@@ -3,11 +3,11 @@
 /**
  * Day 1 - Part 1
  *
- * Pair up the smallest number in the left list with the smallest number in the right list
- * Then the second-smallest left number with the second-smallest right number, and so on.
- * Within each pair, figure out how far apart the two numbers are. Add up all the distances.
- * What is the total distance between lists?
+ * Pair and sort both lists smallest-to-smallest.
+ * Calculate the absolute difference for each pair.
+ * Sum all differences to find the total distance.
  */
+
 
 const INPUT_FILE = 'test_input.txt';
 $list_1 = [];
@@ -43,9 +43,10 @@ for ($i = 0; $i < count($list_1); $i++) {
 }
 
 /**
- * Day 1 Part 2
+ * Day 1 - Part 2
  *
- * Calculate similarity score
+ * For each number in the left list, count how many times it appears in the right list.
+ * Multiply the number by its count and sum these values to get the similarity score.
  */
 
 $similarity_score = 0;
