@@ -16,7 +16,7 @@ function read_input_file($input_file) : array
         die("Error: Unable to open file " . $input_file. "\n");
     }
 
-    // Extract reports into multidimensional array
+    // Extract reports into multidimensional array and convert values to integers
     $reports = [];
     while (($buffer = fgets($fp)) !== false) {
         $reports[] = array_map('intval', explode(" ", $buffer));
@@ -35,17 +35,19 @@ function report_checker($report) : bool
 {
     $trend = '';
     for ($i = 0; $i < count($report) - 1; $i++) {
-        // Check if increased or decreased in value
-        //echo $report[$i] . " - " . $report[$i + 1] . "\n";
+        // Increased in value
         if ($report[$i] > $report[$i + 1]) {
-            // Check if trend changed
             if ($trend == 'decrease') {
                 return false; // Not safe!
             }
             $trend = 'increase';
+
+        // Values match
         } elseif ($report[$i] == $report[$i + 1]) {
             // Did not increase at all
             return false; // Not safe!
+
+        // Decreased in value
         } else {
             // Check if trend changed
             if ($trend == 'increase') {
@@ -69,10 +71,7 @@ $reports = read_input_file(__DIR__ . "/input.txt");
 $total_safe_reports = 0;
 foreach ($reports as $report) {
     if (report_checker($report)) {
-        //echo "Safe!\n";
         $total_safe_reports += 1;
-    } else {
-        //echo "Not safe!\n";
     }
 }
 
