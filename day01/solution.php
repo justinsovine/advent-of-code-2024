@@ -90,3 +90,4 @@ $similarity_score = calculate_similarity_score($list_1, $list_2);
 
 // Display results
 echo "Similarity score: $similarity_score\n";
+
