@@ -70,9 +70,44 @@ $reports = read_input_file(__DIR__ . "/input.txt");
 
 $total_safe_reports = 0;
 foreach ($reports as $report) {
+    // Check if report is safe
     if (report_checker($report)) {
         $total_safe_reports += 1;
+    } else {
+        // Check if removing one of the levels will make it safe
+        if (brute_force_problem_dampener($report)) {
+            $total_safe_reports += 1;
+        }
     }
 }
 
 echo "Total Safe Reports: $total_safe_reports\n";
+
+/**
+ * Day 2 - Part 2
+ *
+ * Update the analysis to include the Problem Dampener, which allows removing one level
+ * from an otherwise unsafe report to make it safe. A report is now safe if:
+ *
+ * - It meets the original safety rules, or
+ * - Removing any single level makes it safe.
+ *
+ * How many reports are now safe?
+ */
+
+function brute_force_problem_dampener($report) : bool
+{
+    // Iterate through report and remove one of each level until it works (or doesn't)
+    for ($i = 0; $i < count($report); $i++) {
+        $temp_report = $report; // Create temporary report
+        unset($temp_report[$i]); // Remove level
+        $temp_report = array_values($temp_report); // Rebase array keys after unsetting $i
+
+        // Run through report checker again
+        if (report_checker($temp_report)) {
+            return true; // Problem fixed!
+        }
+    }
+
+    return false; // Problem remains!
+}
