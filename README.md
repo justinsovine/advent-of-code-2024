@@ -12,7 +12,7 @@ This is my first year, and I've decided to see how far I can get using PHP ðŸŽ…â
 |------|--------------------------------------|--------------------------------|
 | Day 1  | [Advent of Code - Day 1](https://adventofcode.com/2024/day/1)  | [Solution](day01/solution.php) |
 | Day 2  | [Advent of Code - Day 2](https://adventofcode.com/2024/day/2)  | [Solution](day02/solution.php) |
-| Day 3  | [Advent of Code - Day 3](https://adventofcode.com/2024/day/3)  | _(coming soon)_                |
+| Day 3  | [Advent of Code - Day 3](https://adventofcode.com/2024/day/3)  | [Solution](day03/solution.php) |
 | Day 4  | [Advent of Code - Day 4](https://adventofcode.com/2024/day/4)  | _(coming soon)_                |
 | Day 5  | [Advent of Code - Day 5](https://adventofcode.com/2024/day/5)  | _(coming soon)_                |
 | Day 6  | [Advent of Code - Day 6](https://adventofcode.com/2024/day/6)  | _(coming soon)_                |
